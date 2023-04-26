@@ -2,16 +2,20 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-body {
-	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
+
+html {
+	@apply text-base box-border;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+body {
+	@apply m-0 p-0 font-sans text-gray-200 bg-gray-800;
+}
+
+.btn {
+	@apply bg-gray-200 text-gray-800 font-sans px-6 py-2 cursor-pointer;
+}
+
+.btn:hover {
+	@apply bg-gray-300;
 }
