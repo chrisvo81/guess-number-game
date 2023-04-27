@@ -27,7 +27,7 @@ header {
 }
 
 h1 {
-	@apply text-lg md:text-3xl;
+	@apply text-xl md:text-3xl;
 	top: 52%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -44,7 +44,7 @@ h1 {
 }
 
 .between {
-	@apply text-lg top-8 right-8;
+	@apply text-sm md:text-lg top-8 right-8;
 }
 
 .again {
