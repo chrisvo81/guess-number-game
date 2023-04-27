@@ -8,10 +8,12 @@ const Header: React.FC = () => {
 		useStore(useGameStore);
 
 	return (
-		<header>
-			<h1>Guess A Number!</h1>
-			<p>(Between 1 and 20)</p>
-			<button onClick={setCorrectNumber}>Again!</button>
+		<header className='relative'>
+			<h1 className='absolute w-full text-center'>Guess A Number!</h1>
+			<p className='absolute between'>(Between 1 and 20)</p>
+			<button className='btn again' onClick={setCorrectNumber}>
+				Again!
+			</button>
 			<div>{guessedNumber === correctNumber ? correctNumber : '?'}</div>
 		</header>
 	);

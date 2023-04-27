@@ -4,18 +4,63 @@
 
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap');
 
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
 html {
-	@apply text-base box-border;
+	@apply box-border text-base;
 }
 
 body {
-	@apply m-0 p-0 font-sans text-gray-200 bg-gray-800;
+	/* @apply p-0 m-0 text-gray-200 bg-gray-800; */
+	@apply text-gray-200 bg-gray-800;
+	font-family: 'Press Start 2P', sans-serif;
+}
+
+/* HEADER */
+header {
+	@apply border-b-[7px] border-gray-200;
+	height: 40vh;
+}
+
+h1 {
+	@apply text-lg md:text-3xl;
+	top: 52%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
 
 .btn {
-	@apply bg-gray-200 text-gray-800 font-sans px-6 py-2 cursor-pointer;
+	@apply px-12 py-8 text-2xl text-gray-800 bg-gray-200 cursor-pointer;
+	font-family: inherit;
+	border: none;
 }
 
 .btn:hover {
 	@apply bg-gray-300;
+}
+
+.between {
+	@apply text-lg top-8 right-8;
+}
+
+.again {
+	position: absolute;
+	top: 2rem;
+	left: 2rem;
+}
+
+.number {
+	@apply bottom-0 text-black bg-gray-200;
+	font-size: 6rem;
+	width: 15rem;
+	padding: 3rem 0rem;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, 50%);
 }
