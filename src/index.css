@@ -34,23 +34,13 @@ h1 {
 }
 
 .btn {
-	@apply px-12 py-8 text-2xl text-gray-800 bg-gray-200 cursor-pointer;
+	@apply px-6 py-4 text-lg text-gray-800 bg-gray-200 cursor-pointer;
 	font-family: inherit;
 	border: none;
 }
 
 .btn:hover {
-	@apply bg-gray-300;
-}
-
-.between {
-	@apply text-sm md:text-lg top-8 right-8;
-}
-
-.again {
-	position: absolute;
-	top: 2rem;
-	left: 2rem;
+	@apply bg-gray-400;
 }
 
 .number {
