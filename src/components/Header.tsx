@@ -15,9 +15,12 @@ const Header: React.FC = () => {
 				</button>
 				<p className='mt-4 md:mt-0'>(Between 1 and 20)</p>
 			</div>
-
-			<h1 className='w-full mt-20 text-center'>Guess A Number!</h1>
-			{/* <div>{guessedNumber === correctNumber ? correctNumber : '?'}</div> */}
+			<div className='flex flex-col items-center justify-between w-full mt-20 text-center'>
+				<h1 className=''>Guess A Number!</h1>
+				<div className='box'>
+					{guessedNumber === correctNumber ? correctNumber : '?'}
+				</div>
+			</div>
 		</header>
 	);
 };
