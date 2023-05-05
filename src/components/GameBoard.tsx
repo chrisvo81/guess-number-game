@@ -2,10 +2,36 @@ import * as React from 'react';
 import { useStore } from 'zustand';
 
 import { useGameStore } from '../store';
+import { msgList } from './helpers';
 
 const GameBoard: React.FC = () => {
-	const { guessedNumber, message, score, setGuessedNumber } =
-		useStore(useGameStore);
+	const {
+		guessedNumber,
+		correctNumber,
+		message,
+		score,
+		setGuessedNumber,
+		setMessage,
+		setScore,
+	} = useStore(useGameStore);
+
+	const checkNumber = () => {
+		if (!guessedNumber) {
+			setMessage(msgList.noInput);
+		} else if (guessedNumber > correctNumber) {
+			setScore(score - 1);
+			setMessage(msgList.inputHigher);
+		} else if (guessedNumber < correctNumber) {
+			setScore(score - 1);
+			setMessage(msgList.inputLower);
+		} else {
+			uWon();
+		}
+	};
+
+	const uWon = () => {
+		setMessage(msgList.correctInput);
+	};
 
 	return (
 		<main className='flex flex-row items-center justify-center mx-6 space-x-7 mt-14'>
@@ -16,12 +42,7 @@ const GameBoard: React.FC = () => {
 					value={guessedNumber ?? ''}
 					onChange={(e) => setGuessedNumber(parseInt(e.target.value))}
 				/>
-				<button
-					className='btn'
-					onClick={() => {
-						// TODO: Logic for checking the guessedNumber goes here
-					}}
-				>
+				<button className='btn' onClick={checkNumber}>
 					Check!
 				</button>
 			</div>
