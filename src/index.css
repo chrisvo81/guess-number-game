@@ -27,10 +27,7 @@ header {
 }
 
 h1 {
-	@apply text-xl md:text-3xl;
-	top: 52%;
-	left: 50%;
-	transform: translate(-50%, -50%);
+	@apply text-3xl;
 }
 
 .btn {

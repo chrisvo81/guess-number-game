@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 				<p className='mt-4 md:mt-0'>(Between 1 and 20)</p>
 			</div>
 
-			<h1 className='absolute w-full text-center'>Guess A Number!</h1>
+			<h1 className='w-full mt-20 text-center'>Guess A Number!</h1>
 			{/* <div>{guessedNumber === correctNumber ? correctNumber : '?'}</div> */}
 		</header>
 	);
