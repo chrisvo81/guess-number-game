@@ -21,11 +21,6 @@ body {
 }
 
 /* HEADER */
-header {
-	@apply border-b-[7px] border-gray-200;
-	height: 40vh;
-}
-
 h1 {
 	@apply text-3xl;
 }
@@ -45,13 +40,5 @@ h1 {
 }
 
 .number {
-	@apply bottom-0 text-black bg-gray-200;
-	font-size: 6rem;
-	width: 15rem;
-	padding: 3rem 0rem;
-	text-align: center;
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translate(-50%, 50%);
+	@apply p-8 text-2xl text-black bg-gray-200;
 }

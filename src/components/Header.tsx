@@ -8,7 +8,7 @@ const Header: React.FC = () => {
 		useStore(useGameStore);
 
 	return (
-		<header className='m-4'>
+		<header className='m-6'>
 			<div className='flex flex-col items-center justify-between md:flex-row'>
 				<button className='btn' onClick={setCorrectNumber}>
 					Again!
