@@ -16,7 +16,7 @@ const Header: React.FC = () => {
 	const resetHandler = () => {
 		setCorrectNumber();
 		setMessage({
-			text: '',
+			text: 'Start guessing...',
 		});
 		setGuessedNumber(null);
 		setScore(0);
