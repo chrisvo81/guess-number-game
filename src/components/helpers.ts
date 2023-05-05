@@ -13,4 +13,7 @@ export const msgList = {
 	correctInput: {
 		text: '🔥 Correct number!',
 	},
+	loseGame: {
+		text: '💣 You lost the game!',
+	},
 };

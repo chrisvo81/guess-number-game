@@ -15,6 +15,14 @@ const GameBoard: React.FC = () => {
 		setScore,
 	} = useStore(useGameStore);
 
+	const gameHandler = () => {
+		if (score <= 1) {
+			setMessage(msgList.loseGame);
+		} else {
+			checkNumber();
+		}
+	};
+
 	const checkNumber = () => {
 		if (!guessedNumber) {
 			setMessage(msgList.noInput);
@@ -42,7 +50,7 @@ const GameBoard: React.FC = () => {
 					value={guessedNumber ?? ''}
 					onChange={(e) => setGuessedNumber(parseInt(e.target.value))}
 				/>
-				<button className='btn' onClick={checkNumber}>
+				<button className='btn' onClick={gameHandler}>
 					Check!
 				</button>
 			</div>
