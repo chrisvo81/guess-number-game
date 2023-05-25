@@ -19,7 +19,7 @@ const Header: React.FC = () => {
 			text: 'Start guessing...',
 		});
 		setGuessedNumber(null);
-		setScore(0);
+		setScore(20);
 	};
 
 	return (

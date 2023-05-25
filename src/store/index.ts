@@ -6,22 +6,25 @@ export type GameState = {
 	correctNumber: number;
 	guessedNumber: number | null;
 	score: number;
+	scoreList: number[];
 	highest: number;
 
 	setMessage: (message: Message) => void;
 	setCorrectNumber: () => void;
 	setGuessedNumber: (number: number | null) => void;
 	setScore: (score: number) => void;
+	setScoreList: (score: number) => void;
 	setHighest: () => void;
 };
 
-export const useGameStore = create<GameState>((set) => ({
+export const useGameStore = create<GameState>((set, get) => ({
 	message: {
 		text: 'Start guessing...',
 	},
 	correctNumber: Math.trunc(Math.random() * 20) + 1,
 	guessedNumber: null,
 	score: 20,
+	scoreList: [],
 	highest: 0,
 
 	setMessage: (message) => set({ message: message }),
@@ -31,6 +34,13 @@ export const useGameStore = create<GameState>((set) => ({
 	},
 	setGuessedNumber: (number) => set({ guessedNumber: number }),
 	setScore: (score) => set({ score: score }),
+	setScoreList: (score: number) => {
+		if (score > get().highest) {
+			set({ scoreList: [...get().scoreList, score], highest: score });
+		} else {
+			set({ scoreList: [...get().scoreList, score] });
+		}
+	},
 	setHighest: () => {
 		// TODO: set highest score correctly
 	},

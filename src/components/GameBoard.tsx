@@ -10,9 +10,11 @@ const GameBoard: React.FC = () => {
 		correctNumber,
 		message,
 		score,
+		highest,
 		setGuessedNumber,
 		setMessage,
 		setScore,
+		setScoreList,
 	} = useStore(useGameStore);
 
 	const gameHandler = () => {
@@ -33,6 +35,7 @@ const GameBoard: React.FC = () => {
 			setScore(score - 1);
 			setMessage(msgList.inputLower);
 		} else {
+			setScoreList(score);
 			uWon();
 		}
 	};
@@ -61,7 +64,7 @@ const GameBoard: React.FC = () => {
 						💯 Score: <span>{score}</span>
 					</p>
 					<p>
-						🥇 Highest: <span>0</span>
+						🥇 Highest: <span>{highest}</span>
 					</p>
 				</div>
 			</div>
