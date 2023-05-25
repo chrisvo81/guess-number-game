@@ -4,45 +4,15 @@ import { useStore } from 'zustand';
 import { useGameStore } from '../store';
 import { msgList } from './helpers';
 
-const GameBoard: React.FC = () => {
-	const {
-		guessedNumber,
-		correctNumber,
-		message,
-		score,
-		highest,
-		setGuessedNumber,
-		setMessage,
-		setScore,
-		setScoreList,
-	} = useStore(useGameStore);
+type GameBoardProps = {
+	gameHandler: () => void;
+};
 
-	const gameHandler = () => {
-		if (score <= 1) {
-			setMessage(msgList.loseGame);
-		} else {
-			checkNumber();
-		}
-	};
+const GameBoard = (props: GameBoardProps): JSX.Element => {
+	const { guessedNumber, message, score, highest, setGuessedNumber } =
+		useStore(useGameStore);
 
-	const checkNumber = () => {
-		if (!guessedNumber) {
-			setMessage(msgList.noInput);
-		} else if (guessedNumber > correctNumber) {
-			setScore(score - 1);
-			setMessage(msgList.inputHigher);
-		} else if (guessedNumber < correctNumber) {
-			setScore(score - 1);
-			setMessage(msgList.inputLower);
-		} else {
-			setScoreList(score);
-			uWon();
-		}
-	};
-
-	const uWon = () => {
-		setMessage(msgList.correctInput);
-	};
+	const { gameHandler } = props;
 
 	return (
 		<main className='flex flex-row items-center justify-center mx-6 space-x-7 mt-14'>

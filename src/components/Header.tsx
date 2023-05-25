@@ -3,29 +3,15 @@ import { useStore } from 'zustand';
 
 import { useGameStore } from '../store';
 
-const Header: React.FC = () => {
-	const {
-		score,
-		guessedNumber,
-		correctNumber,
-		setCorrectNumber,
-		setMessage,
-		setGuessedNumber,
-		setScore,
-		resetScores,
-	} = useStore(useGameStore);
+type HeaderProps = {
+	isLoseGame: boolean;
+	resetHandler: () => void;
+};
 
-	const isLoseGame = score <= 1;
+const Header = (props: HeaderProps): JSX.Element => {
+	const { guessedNumber, correctNumber } = useStore(useGameStore);
 
-	const resetHandler = () => {
-		setCorrectNumber();
-		setMessage({
-			text: 'Start guessing...',
-		});
-		setGuessedNumber(null);
-		setScore(20);
-		isLoseGame && resetScores();
-	};
+	const { isLoseGame, resetHandler } = props;
 
 	return (
 		<header className='m-6'>
