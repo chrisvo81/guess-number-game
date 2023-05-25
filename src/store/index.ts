@@ -14,7 +14,7 @@ export type GameState = {
 	setGuessedNumber: (number: number | null) => void;
 	setScore: (score: number) => void;
 	setScoreList: (score: number) => void;
-	setHighest: () => void;
+	resetScores: () => void;
 };
 
 export const useGameStore = create<GameState>((set, get) => ({
@@ -34,14 +34,17 @@ export const useGameStore = create<GameState>((set, get) => ({
 	},
 	setGuessedNumber: (number) => set({ guessedNumber: number }),
 	setScore: (score) => set({ score: score }),
+
+	// check scores and set highest
 	setScoreList: (score: number) => {
 		if (score > get().highest) {
 			set({ scoreList: [...get().scoreList, score], highest: score });
-		} else {
-			set({ scoreList: [...get().scoreList, score] });
 		}
 	},
-	setHighest: () => {
-		// TODO: set highest score correctly
+
+	// use to reset the highest
+	resetScores: () => {
+		set({ highest: 0 });
+		set({ scoreList: [] });
 	},
 }));
