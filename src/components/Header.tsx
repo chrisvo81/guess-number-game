@@ -13,7 +13,8 @@ const Header = (props: HeaderProps): JSX.Element => {
 	const { correctNumber } = useStore(useGameStore);
 
 	const { isLoseGame, isGameWin, resetHandler } = props;
-
+	console.log('Header ~ isGameWin:', isGameWin);
+	console.log('Header ~ isLoseGame:', isLoseGame);
 	const showNumber = isLoseGame || isGameWin ? correctNumber : '?';
 
 	return (
@@ -26,10 +27,7 @@ const Header = (props: HeaderProps): JSX.Element => {
 			</div>
 			<div className='flex flex-col items-center justify-between w-full mt-20 text-center'>
 				<h1 className=''>Guess A Number!</h1>
-				<div className='box'>
-					{/* TODO: Hide this until they click on check button */}
-					{showNumber}
-				</div>
+				<div className='box'>{showNumber}</div>
 			</div>
 		</header>
 	);

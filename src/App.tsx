@@ -21,8 +21,7 @@ const App = () => {
 		resetScores,
 	} = useStore(useGameStore);
 
-	let isGameLose = score <= 1;
-	// const [isGameLose, setIsGameLose] = useState(score <= 1);
+	const [isGameLose, setIsGameLose] = useState(score <= 1);
 	const [isGameWin, setIsGameWin] = useState(false);
 
 	const resetHandler = () => {
@@ -34,8 +33,9 @@ const App = () => {
 		setScore(20);
 		if (isGameLose) {
 			resetScores();
-			isGameLose = false;
+			setIsGameLose(false);
 		}
+		setIsGameWin(false);
 	};
 
 	const gameHandler = () => {
