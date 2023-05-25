@@ -74,7 +74,11 @@ const App = () => {
 				isGameWin={isGameWin}
 				resetHandler={resetHandler}
 			/>
-			<GameBoard gameHandler={gameHandler} />
+			<GameBoard
+				gameHandler={gameHandler}
+				isLoseGame={isGameLose}
+				isGameWin={isGameWin}
+			/>
 			<Footer />
 		</div>
 	);

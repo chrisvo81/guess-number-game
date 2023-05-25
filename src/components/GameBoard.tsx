@@ -5,6 +5,8 @@ import { useGameStore } from '../store';
 import { msgList } from './helpers';
 
 type GameBoardProps = {
+	isLoseGame: boolean;
+	isGameWin: boolean;
 	gameHandler: () => void;
 };
 
@@ -12,7 +14,7 @@ const GameBoard = (props: GameBoardProps): JSX.Element => {
 	const { guessedNumber, message, score, highest, setGuessedNumber } =
 		useStore(useGameStore);
 
-	const { gameHandler } = props;
+	const { isLoseGame, isGameWin, gameHandler } = props;
 
 	return (
 		<main className='flex flex-row items-center justify-center mx-6 space-x-7 mt-14'>
@@ -23,7 +25,11 @@ const GameBoard = (props: GameBoardProps): JSX.Element => {
 					value={guessedNumber ?? ''}
 					onChange={(e) => setGuessedNumber(parseInt(e.target.value))}
 				/>
-				<button className='btn' onClick={gameHandler}>
+				<button
+					className='btn'
+					onClick={gameHandler}
+					disabled={isLoseGame || isGameWin}
+				>
 					Check!
 				</button>
 			</div>

@@ -13,8 +13,6 @@ const Header = (props: HeaderProps): JSX.Element => {
 	const { correctNumber } = useStore(useGameStore);
 
 	const { isLoseGame, isGameWin, resetHandler } = props;
-	console.log('Header ~ isGameWin:', isGameWin);
-	console.log('Header ~ isLoseGame:', isLoseGame);
 	const showNumber = isLoseGame || isGameWin ? correctNumber : '?';
 
 	return (
