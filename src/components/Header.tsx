@@ -5,15 +5,16 @@ import { useGameStore } from '../store';
 
 type HeaderProps = {
 	isLoseGame: boolean;
+	isGameWin: boolean;
 	resetHandler: () => void;
 };
 
 const Header = (props: HeaderProps): JSX.Element => {
-	const { guessedNumber, correctNumber } = useStore(useGameStore);
+	const { correctNumber } = useStore(useGameStore);
 
-	const { isLoseGame, resetHandler } = props;
+	const { isLoseGame, isGameWin, resetHandler } = props;
 
-	const showNumber = isLoseGame ? correctNumber : '?';
+	const showNumber = isLoseGame || isGameWin ? correctNumber : '?';
 
 	return (
 		<header className='m-6'>
