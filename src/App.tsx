@@ -20,7 +20,7 @@ const App = () => {
 		resetScores,
 	} = useStore(useGameStore);
 
-	const isLoseGame = score <= 1;
+	const isGameLose = score <= 1;
 
 	const resetHandler = () => {
 		setCorrectNumber();
@@ -29,7 +29,7 @@ const App = () => {
 		});
 		setGuessedNumber(null);
 		setScore(20);
-		isLoseGame && resetScores();
+		isGameLose && resetScores();
 	};
 
 	const gameHandler = () => {
@@ -51,18 +51,18 @@ const App = () => {
 			setMessage(msgList.inputLower);
 		} else {
 			setScoreList(score);
-			uWon();
+			gameWin();
 		}
 	};
 
-	const uWon = () => {
+	const gameWin = () => {
 		setMessage(msgList.correctInput);
 	};
 
 	// TODO: fix style so that footer is at bottom
 	return (
 		<div className='flex flex-col min-h-screen'>
-			<Header isLoseGame={isLoseGame} resetHandler={resetHandler} />
+			<Header isLoseGame={isGameLose} resetHandler={resetHandler} />
 			<GameBoard gameHandler={gameHandler} />
 			<Footer />
 		</div>
