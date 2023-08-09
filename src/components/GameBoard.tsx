@@ -4,42 +4,17 @@ import { useStore } from 'zustand';
 import { useGameStore } from '../store';
 import { msgList } from './helpers';
 
-const GameBoard: React.FC = () => {
-	const {
-		guessedNumber,
-		correctNumber,
-		message,
-		score,
-		setGuessedNumber,
-		setMessage,
-		setScore,
-	} = useStore(useGameStore);
+type GameBoardProps = {
+	isLoseGame: boolean;
+	isGameWin: boolean;
+	gameHandler: () => void;
+};
 
-	const gameHandler = () => {
-		if (score <= 1) {
-			setMessage(msgList.loseGame);
-		} else {
-			checkNumber();
-		}
-	};
+const GameBoard = (props: GameBoardProps): JSX.Element => {
+	const { guessedNumber, message, score, highest, setGuessedNumber } =
+		useStore(useGameStore);
 
-	const checkNumber = () => {
-		if (!guessedNumber) {
-			setMessage(msgList.noInput);
-		} else if (guessedNumber > correctNumber) {
-			setScore(score - 1);
-			setMessage(msgList.inputHigher);
-		} else if (guessedNumber < correctNumber) {
-			setScore(score - 1);
-			setMessage(msgList.inputLower);
-		} else {
-			uWon();
-		}
-	};
-
-	const uWon = () => {
-		setMessage(msgList.correctInput);
-	};
+	const { isLoseGame, isGameWin, gameHandler } = props;
 
 	return (
 		<main className='flex flex-row items-center justify-center mx-6 space-x-7 mt-14'>
@@ -50,7 +25,11 @@ const GameBoard: React.FC = () => {
 					value={guessedNumber ?? ''}
 					onChange={(e) => setGuessedNumber(parseInt(e.target.value))}
 				/>
-				<button className='btn' onClick={gameHandler}>
+				<button
+					className='btn'
+					onClick={gameHandler}
+					disabled={isLoseGame || isGameWin}
+				>
 					Check!
 				</button>
 			</div>
@@ -61,7 +40,7 @@ const GameBoard: React.FC = () => {
 						💯 Score: <span>{score}</span>
 					</p>
 					<p>
-						🥇 Highest: <span>0</span>
+						🥇 Highest: <span>{highest}</span>
 					</p>
 				</div>
 			</div>
